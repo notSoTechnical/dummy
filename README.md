@@ -50,6 +50,6 @@ ROS 2 teams, self-serve, inside the dev loop.
 
 ## Founder
 
-Anni Yang — systems/test engineer (Raytheon, Lockheed Martin), builder of
+Anni Yang — systems/software/test engineer (Raytheon, Lockheed Martin), builder of
 [Bingo](https://github.com/notSoTechnical/bingo-backend) (verified code
 answers: pass two independent test suites, or nothing ships).
