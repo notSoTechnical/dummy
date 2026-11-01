@@ -2,7 +2,7 @@
 
 ## Verdict: RED — DEPLOY BLOCKED
 
-1/6 scenarios passed.
+1/7 scenarios passed.
 
 | # | Scenario | Result | Closest gap (m) | Top speed (m/s) | Goal reached | Detail |
 |---|---|---|---|---|---|---|
@@ -12,5 +12,6 @@
 | S4 | Emergency stop | **FAIL** | 99.0 | 2.0 | yes | never stopped after e-stop |
 | S5 | Blocked goal | **FAIL** | -0.05 | 2.0 | no | collision |
 | S6 | Clear-world sanity (must reach goal) | PASS | 99.0 | 2.0 | yes | goal reached |
+| S7 | Night run — dark obstacle | **FAIL** | -0.2 | 2.0 | no | collision |
 
 *Dummy v0 — pre-deployment simulation gate. Not a safety certification.*

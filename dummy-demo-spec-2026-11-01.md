@@ -19,6 +19,9 @@ That 30-second contrast is the whole pitch — for the landing page, the YC/Spee
 | S4 | **E-stop** — an emergency stop fires mid-run | Robot halts within **0.5 s** and stays halted | Controllers that ignore stop commands |
 | S5 | **Blocked goal** — the goal point itself is barricaded | No collision; robot must *not* force its way in (stopping and reporting failure = PASS) | Controllers that ram through to "succeed" |
 | S6 | **Clear-world sanity** — empty world, reachable goal | Robot actually reaches the goal in time | "Coward" controllers that pass safety tests by never moving |
+| S7 | **Night run** — darkness: the main camera/lidar sensor is blind; a black cart (or dark animal) blocks the path | No collision | Controllers that trust one sensor: at night it sees *nothing*. The robot has a short-range bumper sonar (≤0.6 m, works in the dark) — a night-aware controller slows down in low light and trusts the bumper |
+
+*S7 added Nov 1, 2026 at the founder's suggestion ("night vision... so it won't hit a black cart or dark color cats/animals"). It immediately caught a real blind spot: the v0 careful controller — camera-only — fails S7. The night-aware version passes.*
 
 S6 is deliberate: a gate that only punishes movement would certify robots that do nothing. Dummy certifies robots that are **safe AND functional** — the same honesty rule as Bingo (pass both suites, or no delivery).
 

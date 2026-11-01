@@ -6,7 +6,10 @@ goal at 2.0 m/s, ignores its distance sensor, ignores the e-stop.
 careful_bot: the fixed version. Clamps speed to the 0.5 m/s limit (the same
 clamp taught in ZeroToAIAgent Ep118), reads its sensor every step, stops for
 obstacles and pedestrians, honors the e-stop, and waits instead of ramming
-a blocked goal.
+a blocked goal. Night-aware (v2): it also watches the short-range bumper
+sensor — the only sensor that still works in the dark — and slows to a
+crawl in low light, so a black cart or a dark animal at night still gets
+seen in time.
 """
 from __future__ import annotations
 
@@ -41,14 +44,18 @@ class RecklessBot:
 
 class CarefulBot:
     name = "careful_bot"
+    NIGHT_SPEED = 0.25  # crawl speed when the main sensor can't be trusted
 
     def step(self, obs):
         if obs.estop:
             return 0.0, 0.0
-        if obs.gap < STOP_GAP:
+        # The bumper sonar works in the dark; the camera may not. Trust both.
+        effective_gap = min(obs.gap, obs.bumper_gap)
+        if effective_gap < STOP_GAP:
             return 0.0, 0.0  # wait — never ram
         dx, dy = obs.goal_x - obs.x, obs.goal_y - obs.y
         if math.hypot(dx, dy) <= 0.3:
             return 0.0, 0.0
-        vx, vy = _toward(obs, SPEED_LIMIT)
+        speed = self.NIGHT_SPEED if obs.low_light else SPEED_LIMIT
+        vx, vy = _toward(obs, speed)
         return clamp_speed(vx, vy)

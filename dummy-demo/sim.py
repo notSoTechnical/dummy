@@ -23,13 +23,20 @@ class Obstacle:
     vy: float = 0.0
 
 
+BUMPER_RANGE = 0.6  # metres — the short-range bumper/sonar only sees this far
+
+
 @dataclass
 class Observation:
     x: float
     y: float
     goal_x: float
     goal_y: float
-    gap: float          # surface distance to the nearest obstacle (inf if none)
+    gap: float          # main (camera/lidar) surface distance to nearest obstacle;
+                        # in the dark this sensor is BLIND and returns inf
+    bumper_gap: float   # short-range bumper/sonar surface distance; works in
+                        # the dark, but returns inf beyond BUMPER_RANGE
+    low_light: bool     # True when the scenario is dark (night run)
     estop: bool         # True once the emergency stop has fired
     t: float
 
@@ -43,6 +50,7 @@ class Scenario:
     duration: float                     # max seconds
     estop_at: float | None = None       # when the e-stop fires, if ever
     check: str = ""                     # which pass rule applies
+    dark: bool = False                  # night: main sensor blind to obstacles
 
 
 @dataclass
@@ -86,7 +94,10 @@ def run_scenario(controller, sc: Scenario) -> RunResult:
         estop = sc.estop_at is not None and t >= sc.estop_at
         if estop and estop_time is None:
             estop_time = t
-        obs = Observation(x, y, gx, gy, _gap(x, y, obstacles), estop, t)
+        true_gap = _gap(x, y, obstacles)
+        seen_gap = math.inf if sc.dark else true_gap
+        bumper_gap = true_gap if true_gap <= BUMPER_RANGE else math.inf
+        obs = Observation(x, y, gx, gy, seen_gap, bumper_gap, sc.dark, estop, t)
         vx, vy = controller.step(obs)
         speed = math.hypot(vx, vy)
         max_speed = max(max_speed, speed)
@@ -152,4 +163,7 @@ def default_scenarios() -> list[Scenario]:
                  [Obstacle(3.0, 0.0, 0.40)], 12.0, check="no_collision"),
         Scenario("S6", "Clear-world sanity (must reach goal)", (3.0, 0.0),
                  [], 20.0, check="reach"),
+        Scenario("S7", "Night run — dark obstacle", (4.0, 0.0),
+                 [Obstacle(2.2, 0.0, 0.35)], 15.0, check="no_collision",
+                 dark=True),
     ]

@@ -16,7 +16,7 @@ blocked (RED) and the careful controller was cleared (GREEN).
 
 ## Files
 
-- `sim.py` — 2D world, scenario pack S1–S6, measurement + pass rules
+- `sim.py` — 2D world, scenario pack S1–S7, measurement + pass rules
 - `controllers.py` — `reckless_bot` (the bad code) and `careful_bot` (the fix)
 - `gate.py` — runs the pack, renders Markdown + HTML reports
 - `run_demo.py` — the 30-second demo from the spec
