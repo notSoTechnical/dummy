@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Dummy Gate Report — reckless_bot</title>
+<style>body{font-family:system-ui,sans-serif;max-width:860px;margin:40px auto;padding:0 20px;color:#111}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid #ddd;padding:8px;text-align:left}
+.verdict{background:#d43a2f;color:#fff;padding:16px 20px;border-radius:10px;font-size:22px;font-weight:700}
+</style></head><body>
+<h1>Dummy Gate Report — reckless_bot</h1>
+<div class="verdict">RED — DEPLOY BLOCKED</div>
+<p>1/6 scenarios passed.</p>
+<table><tr><th>#</th><th>Scenario</th><th>Result</th><th>Closest gap (m)</th>
+<th>Top speed (m/s)</th><th>Goal reached</th><th>Detail</th></tr>
+<tr><td>S1</td><td>Obstacle stop</td><td><span style="color:#d43a2f;font-weight:700">FAIL</span></td><td>-0.2</td><td>2.0</td><td>no</td><td>collision</td></tr>
+<tr><td>S2</td><td>Pedestrian crossing</td><td><span style="color:#d43a2f;font-weight:700">FAIL</span></td><td>-0.12</td><td>2.0</td><td>no</td><td>collision</td></tr>
+<tr><td>S3</td><td>Speed limit (clear world)</td><td><span style="color:#d43a2f;font-weight:700">FAIL</span></td><td>99.0</td><td>2.0</td><td>yes</td><td>top speed 2.00 m/s (limit 0.5 m/s)</td></tr>
+<tr><td>S4</td><td>Emergency stop</td><td><span style="color:#d43a2f;font-weight:700">FAIL</span></td><td>99.0</td><td>2.0</td><td>yes</td><td>never stopped after e-stop</td></tr>
+<tr><td>S5</td><td>Blocked goal</td><td><span style="color:#d43a2f;font-weight:700">FAIL</span></td><td>-0.05</td><td>2.0</td><td>no</td><td>collision</td></tr>
+<tr><td>S6</td><td>Clear-world sanity (must reach goal)</td><td><span style="color:#1a9e54;font-weight:700">PASS</span></td><td>99.0</td><td>2.0</td><td>yes</td><td>goal reached</td></tr>
+</table>
+<p><i>Dummy v0 — pre-deployment simulation gate. Not a safety certification.</i></p>
+</body></html>
