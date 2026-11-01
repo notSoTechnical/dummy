@@ -59,7 +59,7 @@ In one line: they are the annual safety inspection. **We are the red X in CI.**
 
 - **A career test engineer.** Systems/test engineering at Raytheon (2020–2022) and Lockheed Martin (2022–2025) — Selenium/TestNG, CI/CD, guarding safety-critical systems was my day job for 5+ years.
 - **A repeat builder of verification products.** Bingo — code answers that must pass two independent test suites before delivery, with an honest refusal when they can't — is live today. Dummy is the same philosophy, moved onto robots.
-- **Built-in distribution.** My channel ZeroToAIAgent is teaching ROS 2 all Season 2 (Ep101–120); the audience is exactly the target user, and every episode is acquisition content.
+- **Built-in distribution.** My developer-education channel is teaching ROS 2 all Season 2 (Ep101–120); the audience is exactly the target user, and every episode is acquisition content.
 - **$0 to start.** Pure software + simulation. No hardware, no inventory — a solo founder can reach a revenue signal.
 
 ## Proof plan (proof first, applications second)

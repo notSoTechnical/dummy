@@ -7,7 +7,7 @@
 > The fixed controller gets a **GREEN gate: CLEARED TO DEPLOY**.
 > Same tests. Same world. The only difference is the code under test.
 
-That 30-second contrast is the whole pitch — for the landing page, the YC/Speedrun application video, and ZeroToAIAgent Ep118–120.
+That 30-second contrast is the whole pitch — for the landing page, the YC/Speedrun application video, and the ROS 2 series finale (Ep118–120).
 
 ## What the gate tests (v0 scenario pack — mobile robots)
 
